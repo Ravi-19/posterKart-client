@@ -1,0 +1,85 @@
+.Footer{
+    background-color: rgba(0, 0, 0, 0.055);
+    padding-block: 20px;
+    margin-top: 80px;
+    .footerContent{
+        display: flex;
+        justify-content: space-between;
+        
+        .footerTitle{
+            text-transform: uppercase;
+        }
+        .footerLeft{
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            
+            .socialMediaLink{
+                list-style: none;
+                display: flex;
+                gap: 20px;
+
+                li{
+                    font-size: 2rem;
+                   .insta{
+                    color: rgb(239, 88, 113);
+                    background-color: #1b1b1b39;
+                    padding: 7px;
+                    border-radius: 50%;
+
+                    &:hover{
+                        background-color: rgba(132, 130, 130, 0.224);
+                    }
+                    &:active{
+                        background-color: #1b1b1b39;
+                    }
+                   }
+                   .facebook{
+                    color: blue;
+                   }
+                   .tweet{
+                    color: black;
+                   }
+                   .mail{
+                    color: black;
+                   }
+                  
+                }
+            }
+        }
+        .footerRight{
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+
+            .footerLinks{
+                display: flex;
+                flex-direction: column;
+                row-gap: 15px;
+                
+            }
+        }
+        
+    }
+    .subFooter{
+        margin-top: 20px;
+        height: 80px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .copyRight{
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .Footer{
+        .footerContent{
+            flex-direction: column;
+            gap: 40px;
+        }
+    }
+}

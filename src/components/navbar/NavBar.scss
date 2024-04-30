@@ -1,0 +1,81 @@
+.NavBar{
+    background-color: var(--primary-text-color);
+    height: 80px;
+    z-index: 99;
+    color: white;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+
+    .navContiner{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        
+        .navLeft{
+           
+            .linkGroup{
+                list-style: none;
+                display: flex;
+                gap: 16px;
+
+                .navLink{
+                    display: inline-block;
+                    padding: 6px;
+                }
+            }
+        }
+        .navCenter{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-text-color);
+            .banner{
+                color: white;
+            }
+        }
+
+        .navRight{
+
+            .navCart{
+                position: relative;
+                padding: 6px;
+                .cartIcon{
+                    font-size: 2rem;
+                    padding: 6px;
+                }
+                .cartCount{
+                    position: absolute ; 
+                    background-color: var(--accent-color);
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 50%;
+                    top: -4px;
+                    right: -2px;
+                    font-size: 0.6rem;
+                    padding: 4px;
+                    
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    .NavBar{
+
+        .navContiner{
+
+            .navLeft{
+                display: none;
+            }
+            .navCenter{
+                position: static;
+                transform: translateX(0);
+            }
+        }
+        
+    }
+}
