@@ -1,10 +1,13 @@
 import './Product.scss' ; 
 
 import dummyImg from '../../assets/product.webp'
+import { useNavigate } from 'react-router-dom';
 
 function Product() {
+  const navigate = useNavigate() ; 
+
   return (
-    <div className='Product'>
+    <div className='Product' onClick={()=> navigate(`products/erewr34`)} >
       <div className="productContainer">
         <div className="productImg">
           <div className="imgContainer">

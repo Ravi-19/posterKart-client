@@ -1,0 +1,98 @@
+.Catagories{
+    .container{
+        display: flex;
+        flex-direction: column;
+        row-gap: 50px;
+        .catagoriesHeader{
+            display: flex;
+            justify-content: space-between;
+            padding-top: 25px;
+            gap: 30%;
+            .catagoriesInfo{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                h2{
+                    font-weight: 1000;
+                }
+            }
+            .catagoriesSortBy{
+                .sortByContainer{
+                    .sortByText{
+                        margin-bottom: 10px;
+                        font-weight: 800;
+                    }
+                    .selectSortBy{
+                        text-align: center;
+                        font-weight: 600;
+                        padding: 10px;
+                        cursor: pointer;
+                        &:hover{
+                            background-color: #eae6e68f;
+                        }
+                        option{
+                            background-color: #8004beee;
+                            color: white;
+                            padding: 30px;
+                        }
+
+                    }
+                }
+            }
+        }
+        .CatagoriesContent{
+            display: flex;
+            justify-content: space-between;
+            .filterBox{
+                flex: 1;
+                .catagoryFilter{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    h3 {
+                        font-weight: 600;
+                    }
+                    .filterRadio{
+                        padding: 5px;
+                        cursor: pointer;
+                        &:hover{
+                            background-color: rgb(211, 195, 226);
+                            border-radius: 4px;
+                            
+                        }
+                        input[type=radio] {
+                            accent-color: var(--accent-color);
+                        }
+                    }
+                    
+                }
+            }
+            .productBox{
+                flex: 4;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap;
+                
+
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Catagories{
+        .container{
+            .catagoriesHeader{
+                flex-direction: column;
+                gap: 20px;
+            }
+            .CatagoriesContent{
+                flex-direction: column;
+                gap: 20px;
+                
+            }
+        }
+    }
+}
