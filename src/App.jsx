@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import {useDispatch} from 'react-redux' ; 
 import { catagoryData } from './redux/slices/catagorySlice';
 import Payments from './components/payments/Payments';
+import Company from './components/company/Company';
 function App() {
   const dispatch  = useDispatch() ; 
   useEffect(()=> {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/catagory/:catagoryId?" element={<Catagories/>}/>
           <Route path='/products/:productId' element={<ProductDetails/>}/>
           <Route path="/payments/:status" element={<Payments />} />
+          <Route path="/company/:data" element={<Company/>} />
         </Routes>
       </main>
       <Footer/>
