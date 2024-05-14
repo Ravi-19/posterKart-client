@@ -11,10 +11,18 @@
 
         .collectionContent{
             display: flex;
-            justify-content:space-between ; 
+            justify-content:center ; 
             align-items: center;
-            row-gap: 40px;
+            gap: 40px;
             margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .collectionContentCatagory{
+            display: flex;
+            justify-content: space-between ; 
+            align-items: center;
+            margin-top: 20px;
+            row-gap: 40px;
             flex-wrap: wrap;
         }
     }

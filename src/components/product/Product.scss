@@ -10,8 +10,8 @@
         gap: 10px;
 
         .productImg{
-            height: 300px;
-            width: 100%;
+            height: 300px; 
+            width: 100%; 
             padding: 15px;
             border-radius: 4px;
             .imgContainer{
@@ -20,7 +20,7 @@
                 img{
                     width: 100%;
                     height: 100%;
-                    object-fit: cover;
+                    object-fit: contain;
                     &:hover {
                         transform: scale(1.05);
                         transition: 0.2s ease;

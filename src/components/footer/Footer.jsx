@@ -15,14 +15,14 @@ function Footer() {
           <div className="footerLeft">
             <h3 className='footerTitle'>Follow us</h3>
               <ul className="socialMediaLink">
-                <li className='hoverLink'> <FaSquareInstagram className='insta'/></li>
+                <li className='hoverLink' > <FaSquareInstagram className='insta'/></li>
                 <li className='hoverLink'><FaSquareFacebook className='facebook insta'/></li>
                 <li className='hoverLink'><BsTwitterX  className='tweet insta'/></li>
                 <li className='hoverLink'><MdOutlineEmail  className='mail insta'/></li>
               </ul>
           </div>
           <div className="footerRight">
-            <h3 className='footerTitle hoverLink'>Company</h3>
+            <h3 className='footerTitle hoverLink' >Company</h3>
             <div className="footerLinks hoverLink">
               <p className="contactUs hoverLink">Contact Us</p>
               <p className="privacyPolicy hoverLink">Privacy Policy</p>

@@ -22,13 +22,15 @@
                 li{
                     font-size: 2rem;
                    .insta{
-                    color: rgb(239, 88, 113);
+                    color: rgb(227, 85, 109);
                     background-color: #1b1b1b39;
                     padding: 7px;
                     border-radius: 50%;
 
+
                     &:hover{
-                        background-color: rgba(132, 130, 130, 0.224);
+                        background-color:rgba(231, 158, 170, 0.715) ;
+                        transform: scale(1.1);
                     }
                     &:active{
                         background-color: #1b1b1b39;
@@ -36,12 +38,21 @@
                    }
                    .facebook{
                     color: blue;
+                    &:hover{
+                        background-color: rgb(156, 156, 243);
+                    }
                    }
                    .tweet{
                     color: black;
+                    &:hover{
+                        background-color: rgb(145, 142, 142);
+                    }
                    }
                    .mail{
                     color: black;
+                    &:hover{
+                        background-color: rgb(235, 235, 171);
+                    }
                    }
                   
                 }
@@ -56,7 +67,9 @@
                 display: flex;
                 flex-direction: column;
                 row-gap: 15px;
-                
+                p:hover {
+                    color: rgba(118, 114, 114, 0.482);
+                }
             }
         }
         

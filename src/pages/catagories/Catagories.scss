@@ -32,8 +32,9 @@
                         }
                         option{
                             background-color: #8004beee;
-                            color: white;
                             padding: 30px;
+                            color: white;
+                            cursor: pointer;
                         }
 
                     }
@@ -62,6 +63,10 @@
                         }
                         input[type=radio] {
                             accent-color: var(--accent-color);
+                            cursor: pointer;
+                        }
+                        label {
+                            cursor: pointer;
                         }
                     }
                     

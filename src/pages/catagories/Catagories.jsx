@@ -1,38 +1,48 @@
 import { useEffect, useState } from 'react';
 import './Catagories.scss'
-import {useNavigate, useParams} from 'react-router-dom' ; 
-import Product from './../../components/product/Product';
+import { useNavigate, useParams} from 'react-router-dom' ; 
+import Product from '../../components/product/Product';
+import { useSelector } from 'react-redux';
+import { axiosClient } from '../../utils/axiosClient';
 
 function Catagories() {
   const navigate = useNavigate() ; 
   const params = useParams() ;
-  const [catagoryId , setCatagoryId] = useState() ; 
+  const [catagoryId , setCatagoryId] = useState([]) ;
+  const [product , setProduct] = useState([]) ;  
+  const catagoryList = useSelector(state => state.catagoryReducer.catagories) ; 
 
+  const sortOptions =[ {
+    value :"price - Low To High",
+    sort:"price"
+  },
+  {
+    value :"Newest First",
+    sort:"createdAt"
+  }] ; 
 
-  const catagoryList = [
-            {
-              id:'comics',
-              value:'Comics'
-            } , 
-            {
-              id:'tv-shows' , 
-              value:'TV Shows'
-            } , 
-            {
-              id:'sports' , 
-              value:'Sports'
-            }
-  ]
+  const [sortBy , setSortBy] = useState(sortOptions[0].sort) ; 
 
-  useEffect(()=> {
-    setCatagoryId(params.catagoryId)
-  },[params]) ;
-  
-  function updateCatagory(e) {
-    navigate(`catagory/${e.target.value}`) ; 
-
+  async function fetchProductData () {
+    let  productResponse  = null ; 
+    if(params.catagoryId) {
+      productResponse  = await axiosClient.get(`/products?filters[catagory][key][$eq]=${params.catagoryId}&populate=image&sort=${sortBy}`) ; 
+    }
+    else {
+      productResponse = await axiosClient.get(`/products?populate=image&sort=${sortBy}`) ; 
+    }
+   // console.log(productResponse) ; 
+    setProduct(productResponse.data.data) ; 
   }
 
+  function updateCatagory(e) {
+    navigate(`/catagory/${e.target.value}`) ; 
+  }
+  
+  useEffect(()=> {
+    setCatagoryId(params.catagoryId)   ; 
+    fetchProductData() ; 
+  },[params.catagoryId , sortBy]) ;
 
   return (
     <div className='Catagories'>
@@ -49,10 +59,16 @@ function Catagories() {
             <div className="catagoriesSortBy">
               <div className="sortByContainer">
                 <h3 className="sortByText">Sort By</h3>
-                <select className='selectSortBy' name="sortBy" id="sortBy">
-                  <option value="relevance">Relevance</option>
-                  <option value="newestFirst">Newest First</option>
-                  <option value="lowToHigh">price - Low To High</option>
+                <select 
+                  className='selectSortBy' 
+                  name="sortBy" id="sortBy"
+                  onChange={(e)=> setSortBy(e.target.value)}
+                >
+                  {
+                    sortOptions.map(item => {
+                      return (<option key={item.sort} value={item.sort}>{item.value}</option>)
+                    })
+                  }
                 </select>
               </div>
             </div>
@@ -62,32 +78,30 @@ function Catagories() {
             <div className="filterBox">
               <div className="catagoryFilter">
               <h3>Catagory</h3>
-              {catagoryList.map((item) => {
-                 return <div key={item.id} className="filterRadio">
+              {catagoryList?.map((item) => (
+                  <div key={item?.id} className="filterRadio">
                     <input 
                       name='catagory' 
                       type='radio'
-                      value={item.id}
+                      value={item.attributes.key}
                       onChange={updateCatagory}
-                      checked={item.id === catagoryId}
+                      checked={item.attributes.key === catagoryId}
+                      id={item?.attributes.key}
                     />
-                    <label htmlFor={item.id}>{item.value}</label>
+                    <label htmlFor={item?.attributes.key}>{item?.attributes?.title}</label>
                   </div>
-              }) }
+              )) }
               </div>
             </div>
             <div className="productBox">
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
+                {
+                product?.map((product)=> {
+                  return <Product key={product?.id} product={product}/>
+                })
+              }
+             
+              {/* <Product />
+              <Product /> */}
             </div>
           </div>
         </div>

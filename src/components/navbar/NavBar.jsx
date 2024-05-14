@@ -1,19 +1,39 @@
 import './NavBar.scss' ;
 import {Link} from 'react-router-dom' ;  
 import { BsCart3 } from "react-icons/bs";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SideCart from './../sideCart/SideCart';
+import {useSelector} from 'react-redux' ; 
 
 
 function NavBar() {
   const [isCartActive , setIscartActive] = useState(false ) ; 
+
+  const catagories = useSelector(state => state.catagoryReducer.catagories) ; 
+
+  const cart = useSelector(state => state.cartReducer.cart);
+  let totalItems = 0;
+  cart.forEach(item => totalItems += item.quantity);
+
   
+  useEffect(()=> {
+   // console.log(catagories) ; 
+  })
   return (
     <div className='NavBar'>
       <div className="container navContiner">
         <div className="navLeft">
           <ul className='linkGroup'>
-            <li className='hoverLink'>
+          {
+            catagories?.map((catagory) => {
+              return ( 
+                <li key={catagory?.id} className='hoverLink'>
+                <Link className='navLink' to={`catagory/${catagory?.attributes.key}`}>{catagory?.attributes.title}</Link>
+              </li>
+              )
+            })
+          }
+            {/* <li className='hoverLink'>
               <Link className='navLink' to="catagory/comics">comics</Link>
             </li>
             <li className='hoverLink'>
@@ -21,7 +41,7 @@ function NavBar() {
             </li>
             <li className='hoverLink'>
             <Link className='navLink' to="catagory/sports">Sports</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="navCenter">
@@ -32,7 +52,8 @@ function NavBar() {
           <div className="navCart" onClick={() => setIscartActive(!isCartActive)}>
            
              <BsCart3 className='cartIcon hoverLink' />  
-            <span className='cartCount center'>99</span>
+             {totalItems > 0 && <span className='cartCount center'>{totalItems}</span>}
+            
           </div>
         </div>
       </div>

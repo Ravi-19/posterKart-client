@@ -21,6 +21,7 @@
         height: 100vh;
         background-color: white;
         animation: cartSlider 0.3s ease forwards;
+        overflow: auto;
         // transform: translateX(100%);
 
         .sideCartHeader{
@@ -40,6 +41,18 @@
                    transform: scale(1.1);
                    opacity: 0.5;
                 }
+            }
+        }
+        .cartEmpty{
+            padding-top: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            .cartEmptyIcon{
+                font-size: 3rem;
+                color: var(--secondary-text-color);
             }
         }
         .totalPrice{
@@ -75,8 +88,10 @@
 
 @media only screen and (max-width :480px) {
     .SideCart{
+        .overlay{
+            display: none;
+        }
         .sideCartContent{
-           
             width: 100%;
         }
     }

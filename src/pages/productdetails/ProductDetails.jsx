@@ -1,37 +1,70 @@
 import './ProductDetails.scss'
 import messiImg from '../../assets/messi.jpg'
+import { useParams } from 'react-router-dom';
+import { axiosClient } from '../../utils/axiosClient';
+import { useEffect, useState } from 'react';
+import Loader from './../../components/loader/Loader';
+import { useDispatch, useSelector } from 'react-redux';
+import {addToCart, removeFromCart} from '../../redux/slices/cartSlice'
 
 function ProductDetails() {
-  const currValue  = 1 ; 
+  const params = useParams() ;
+  const [product , setProduct] = useState(null) ;  
+  const productKey = params.productId ; 
+  const dispatch = useDispatch() ; 
+
+  const cart = useSelector(state => state.cartReducer.cart);
+  let quantity = cart.find(item => item.key === params.productId)?.quantity || 0;
+
+  async function fetchData() {
+    const productResponse = await axiosClient.get(`/products?filters[key][$eq]=${productKey}&populate=image`) ; 
+
+    //console.log(productResponse) ; 
+    if(productResponse?.data.data.length>0) {
+      setProduct(productResponse?.data.data[0]) ; 
+    }
+  }
+
+  useEffect(()=> {
+    fetchData() ; 
+  } ,[params.productId]) ;
+  
+  if(!product) {
+    return <Loader/>
+  }
   return (
     <div className='ProductDetails'>
       <div className="container">
         <div className="productImgContainer">
           <div className="insideImgContainer">
-            <img src={messiImg} alt="" className="productImg" />
+            <img src={product?.attributes?.image?.data?.attributes?.url} alt="" className="productImg" />
           </div>
         </div>
         <div className="productInfoContainer">
           <div className="productInfoTop">
               <div className="heading">
-                <h2>SINCE 7 STORE Lionel Messi Legendary Career Framed Poster For Gifting/For Room Decor/For Football Fans (A4, BLACK)</h2>
+                <h2>{product?.attributes?.title}</h2>
               </div>
               <div className="price">
-              ₹ 499
+              ₹ {product?.attributes?.price}
               </div>
               <p className="productDesc">
-              Lionel Messi & Cristiano Ronaldo Motivational Quotes Wall Posters,(Football, Sports Poster), Pack of 04 Paper Print (18 inch X 12 inch, Each), Rolled .
+              {product?.attributes?.description}
               </p>
               <div className="priceChanger">
-                  <div className="decrement commen">
+                  <div className="decrement commen"
+                    onClick={() => dispatch(removeFromCart(product))}
+                  >
                     -
                   </div>
-                  <div className="currValue commen">{currValue}</div>
-                  <div className="increment commen">
+                  <div className="currValue commen">{quantity}</div>
+                  <div className="increment commen"
+                    onClick={() => dispatch(addToCart(product))}
+                  >
                     +
                   </div>
               </div>
-              <button className="primaryBtn">
+              <button className="primaryBtn" onClick={() => dispatch(addToCart(product))}>
                 Add to cart
               </button>
           </div>
