@@ -4,6 +4,7 @@ import { BsCart3 } from "react-icons/bs";
 import { useEffect, useState } from 'react';
 import SideCart from './../sideCart/SideCart';
 import {useSelector} from 'react-redux' ; 
+import { PiShoppingCartBold } from "react-icons/pi";
 
 
 function NavBar() {
@@ -46,7 +47,7 @@ function NavBar() {
         </div>
         <div className="navCenter">
           <Link to='/'>
-              <h1 className='banner'>POSTERZ.</h1 >
+              <h1 className='banner center'>POSTER <PiShoppingCartBold /></h1 >
           </Link></div>
         <div className="navRight">
           <div className="navCart" onClick={() => setIscartActive(!isCartActive)}>

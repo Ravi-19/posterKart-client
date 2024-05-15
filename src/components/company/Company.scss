@@ -1,0 +1,58 @@
+.ContactUs{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    .contactusTop{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        h3{
+            padding-top: 10px;
+            font-weight: 700;
+        }
+    }
+    .contactusDetails{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .firstDetail , .secondPara{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+   
+    }
+}
+
+.PrivacyPolicy{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    .privacyPolicytop,.privacyPolicyDown{
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}
+
+.ShippingPolicy{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .shipping{
+        padding-top: 20px;
+    }
+}
+
+.TermsCondition{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    h3{
+        padding-top: 20px;
+    }
+}

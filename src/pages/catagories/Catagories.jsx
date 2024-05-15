@@ -4,6 +4,7 @@ import { useNavigate, useParams} from 'react-router-dom' ;
 import Product from '../../components/product/Product';
 import { useSelector } from 'react-redux';
 import { axiosClient } from '../../utils/axiosClient';
+import Loader from './../../components/loader/Loader';
 
 function Catagories() {
   const navigate = useNavigate() ; 
@@ -42,7 +43,11 @@ function Catagories() {
   useEffect(()=> {
     setCatagoryId(params.catagoryId)   ; 
     fetchProductData() ; 
-  },[params.catagoryId , sortBy]) ;
+  },[params.catagoryId , sortBy , product]) ;
+
+  if(!product) {
+    return <Loader/>
+  }
 
   return (
     <div className='Catagories'>
