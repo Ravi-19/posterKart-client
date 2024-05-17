@@ -24,7 +24,7 @@ function Home() {
 
   useEffect( ()=>{
     fetchData()   ; 
-  } ,[]) ;
+  } ,[catagories  ]) ;
 
   if(!catagories || !topPicks) {
     return ( <Loader/>)

@@ -19,7 +19,7 @@ function NavBar() {
   
   useEffect(()=> {
    // console.log(catagories) ; 
-  })
+  } , [catagories])
   return (
     <div className='NavBar'>
       <div className="container navContiner">
