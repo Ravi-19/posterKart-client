@@ -20,6 +20,7 @@ function Home() {
     //setCatagories(catagoryResponse?.data?.data) ; 
    // console.log("catagory" , catagories) ; 
   //  console.log("products" , topPicks) ; 
+  alert("please wait for around 50 seconds for the first Time to get reload server") ; 
   }
 
   useEffect( ()=>{
