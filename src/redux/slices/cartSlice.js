@@ -43,6 +43,13 @@ const cartSlice = createSlice({
         // create an action to removeCartItem
         resetCart: (state, action) => {
             state.cart = []
+        } , 
+        /// delete item from cart 
+        deleteItemFromCart :(state , action) => {
+            const curKey = 
+            state.cart = state.cart.filter(
+                (item) => item.key !== curKey
+            );
         }
     },
 });
