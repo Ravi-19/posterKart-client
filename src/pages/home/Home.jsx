@@ -15,12 +15,13 @@ function Home() {
   
   async function fetchData () {
     //const catagoryResponse  = await axiosClient.get('/catagories?populate=image') ; 
+    
+    alert("please wait for around 50 seconds for the first Time to get reload server") ;
     const topPicksResponse = await axiosClient.get('/products?filters[isTopPick][$eq]=true&populate=image'); 
     setTopPicks(topPicksResponse?.data?.data) ; 
     //setCatagories(catagoryResponse?.data?.data) ; 
    // console.log("catagory" , catagories) ; 
-  //  console.log("products" , topPicks) ; 
-  alert("please wait for around 50 seconds for the first Time to get reload server") ; 
+  //  console.log("products" , topPicks) ;  
   }
 
   useEffect( ()=>{
